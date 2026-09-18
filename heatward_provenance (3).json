@@ -1,0 +1,35 @@
+{
+  "city": "Kolkata",
+  "period": [
+    "2019-01-01",
+    "2025-12-31"
+  ],
+  "n_wards": 10,
+  "rows": 25530,
+  "layers": {
+    "weather": "REAL \u2014 ERA5 hourly via Open-Meteo archive API",
+    "thermal_index": "COMPUTED \u2014 NOAA HI, Stull wet bulb, BOM shade WBGT, outdoor WBGT, UTCI (pythermalcomfort)",
+    "ward_geometry": "PLACEHOLDER \u2014 replace with KMC 144-ward boundaries",
+    "demographics": "SYNTHETIC \u2014 Census-2011-shaped ranges, not extracted",
+    "reported_deaths": "ANCHORED \u2014 annual total scaled to NCRB West Bengal heat/sun-stroke deaths (MoES Lok Sabha reply, 20 Aug 2025)",
+    "excess_mortality": "TRANSFERRED \u2014 exposure-response curve from published Indian city studies; NOT trained, NOT validated"
+  },
+  "ncrb_anchor_wb": {
+    "2018": 46,
+    "2019": 49,
+    "2020": 6,
+    "2021": 11,
+    "2022": 18
+  },
+  "kolkata_share_assumed": 0.25,
+  "exposure_response": {
+    "index": "wbgt_outdoor_c",
+    "mmt_c": 31.982473122634442,
+    "beta": 0.0476,
+    "beta_ci": [
+      0.0286,
+      0.0666
+    ]
+  },
+  "unmeasured": "Accuracy against observed ward mortality. No public ward-level heat-mortality dataset exists in India."
+}
